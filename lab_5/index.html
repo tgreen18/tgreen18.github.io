@@ -278,13 +278,14 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
+    console.log(countries.length)
     let c_json = JSON.stringify(countries);
-    const cc = JSON.parse(c_json);
-    console.log(cc.name);
-    sessionStorage.setItem("countries", JSON.stringify(cc));
-    const stor = sessionStorage.getItem("countries");
+    var cc = JSON.parse(c_json) ;
+    console.log(cc);
+    sessionStorage.setItem("country", JSON.stringify(cc));
+    const stor = sessionStorage.getItem("country");
     const json = JSON.parse(stor);
-
+    console.log(json);
     console.log("List of countries in the world", countries);
   </script>
 </body>
