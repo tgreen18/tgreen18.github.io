@@ -11,9 +11,9 @@
     <div class="wrapper">
       <div class="header">Test JSON page</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="button" onclick="console.log('You haven\'t written a function yet!');">Click me to replace list entries</button>
+      <button class="button" onclick="countryButton()">Click me to replace list entries</button>
       <div class="content">
-        <ul class="instructions">
+        <ul class="pick">
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
@@ -278,15 +278,37 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
-    console.log(countries.length)
-    let c_json = JSON.stringify(countries);
-    var cc = JSON.parse(c_json) ;
-    console.log(cc);
-    sessionStorage.setItem("country", JSON.stringify(cc));
-    const stor = sessionStorage.getItem("country");
-    const json = JSON.parse(stor);
-    console.log(json);
+    
     console.log("List of countries in the world", countries);
+
+    
+    sessionStorage.setItem('storeCountries', JSON.stringify(countries));
+    
+    function countryButton() {
+      const json = sessionStorage.getItem('storeCountries');
+      const list = JSON.parse(json);
+
+      const listo_names = list.map((i) => i.name);
+      const pick = document.querySelector('.pick');
+      pick.innerHTML = '';
+
+    for (let i = 0; i < 50; i ++) {
+      const selectNumber = getRandomIntInclusive(0,242);
+      let el = document.createElement("li");
+      el.innerText = listo_names[selectNumber];
+      pick.appendChild(el);
+  }
+  
+
+    }
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+
+
   </script>
 </body>
 
