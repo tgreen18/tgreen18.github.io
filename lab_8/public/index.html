@@ -22,11 +22,27 @@
         .then(res => res.json())
         .then(res => {
           console.log(res); // logging step to check what we got
+          let htmlText = document.querySelector(".content");
+          htmlText.innerHTML = "";
+          let classList = document.createElement("ol");
+          classList.className="list";
+          htmlText.appendChild(classList);
+
+          for (let x=0; x < res.data.length; x++) {
+            let orglist = document.createElement("li");
+            orglist.innerText = res.data[x];
+            htmlText.appendChild(orglist);
+          };
           return res;
         })
-        .then(res => res.data.map(c => c.route_id))
-        .then(codes => document.querySelector(".content").innerText = codes);
+
+        .then(res => {
+          console.log(res);
+          return res;
+        })
+        
     }
+    
   </script>
 </body>
 
