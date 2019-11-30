@@ -16,22 +16,33 @@
     </div>
   </div>
   <script>
+    function getRndInteger(min,max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
     function loadData() {
       fetch('ajax_sample.json')
         .then(res => res.json())
-        .then(data => data.map(c => c.code)) // only one thing can be returned here, but you can use more than one property in it
+        .then(data => data.map(c => c.name))
         .then(data => {
-          document.querySelector(".content").innerText = data
-
-          // you can do work here
-          // all the work from the function in lab 5
-          // that loads data into your HTML
-          return data; // you MUST return from a closed fat-arrow
-        })
-        .then(res => )
-        ;
+         str = "<ol>"
+          for (let i = 0; i<15; i+=1) {
+                index = getRndInteger(0, 242);
+                str += "<li>" + data[index] + "</li>";
+          }
+          str += "</ol";
+           document.querySelector(".content").innerHTML = str;
+        });
+             
+          
+        
     }
+    
+    
+ 
+        
+          
   </script>
 </body>
 
+    
 </html>
